@@ -1,0 +1,637 @@
+AWS + DEVOPS COURSE 
+
+DEVOPS ON AWS 
+
+1.AWS -->ALL THE TOPICS WHICH ARE REQUIRED FOR DEVOPS 
+2.GIT --> SCM/VCS 
+3. JENKINS 
+4. MAVEN 
+5. DOCKER 
+6. ANSIBLE 
+7. IAC TOOL 
+8. K8S 
+
+60-75 DAYS 
+
+IT IS PURELY PROJECT BASED LEARNING 
+8-9 PROJECTS 
+3-4 YEARS OF WORKING
+10 YEARS BACK --> 20 YEARS LIFE 
+
+
+ 
+MIGRATING ON PREMISE SERVER TO CLOUD SERVER 
+
+SPEAKING SKILLS --> TERMINOLOGY --> PRACTISE --> ALLOCATE 2-3 HOURS A DAY 
+
+
+
+AWS --> AMAZON WEB SERVICES 
+
+DEPLOYMENT --> ?
+FLIPKART SITE --> TOMO BIG BILLION SALES --> AT 12 --> LIVE BANNER 
+
+DEPLOYMODELS 
+
+1. IAAS -->INFRA AS A SERVICE --> NEW FLAT WITHOUT ANY FURNITURE 
+
+2. PAAS -->  PLATFORM AS A SERVICE --> FURNISHED FLAT mysQL 
+
+3. SAAS --> SOFTWARE AS A SERVICE --> HOTEL ROOM 
+
+
+
+AWS --> EASY , TRUSTED , 
+CREATION AWS ACCOUNT !
+
+
+aws : sharathayd@gmail.com
+
+09/11/23
+
+	vpc --- virtual private cloud 
+
+network --> inter net ..  interconnection of network 
+network is a group or system of interconnected system 
+
+everyone is connected to internet 
+that id --> IP address 
+
+IP address --> IPv4,IPv6
+
+IPv4 --> 32 bit address --> four octets    X.X.X.X
+                                                                            x-> 00000000 - 11111111 , 0-255
+
+
+ 	ipv4 --> 0.0.0.0 - 255.255.255.255
+
+	public IP and private IP 
+	
+	ipv4 ---- 192.168.1.6 -- private ip 
+                     ipv4 --115.98.91.239 -- public ip 
+
+ipv4 divided into 5 classes
+1) 1.0.0.0 - 127.255.255.255 --> class A 
+2) 128.0.0.0 - 191.255.255.255 --> class B 
+3) 192.0.0.0 - 223.255.255.255 -> class c 
+4) 224.0.0.0 - 239.255.255.255 --> class d 
+5) 240.0.0.0 - 255.255.255.255 --> class e
+
+
+private IPs in a class A --> 10.0.0.0 -- 10.255.255.255 -- > 65535
+172.16.0.0 - 172.31.255.255 --> 16384
+192.168.0.0 - 192.168.255.255 --> most used one 
+
+CIDR --> class less inter domain routing 
+
+
+net and subnet 
+network --> 8000 IP 
+subnet -- > small network within a the network 
+
+
+network bits and host bits
+
+in a network , network bits doesnt change .. host bits will change 
+0.0.0.0 --> 
+192.168.0.0/32   this 32 specifies no of network bits --> no host bits so single IP is avilable 
+192.168.0.0000000(n/w)      0 (host)/31 --> 2 IPS 
+192.168.0.000000(n/w)    00(host)/30 --> 4 IPS 
+
+2 power (32-mask bits) --> no of hosts 
+
+192.168.0.0/28 --> 16 ips
+10.0.1.0/24 --> 256 IPs
+10.0.0.0/18 --> 16384 IPs 
+
+
+VPC --> main network 
+different depts --> diff subnet 
+based on work and visibility to the others 
+again these subnets are classified into 2 types 
+1. public subnet --> which the dev wants people to access --> those servers 
+we keep in 
+2. private subnet --> some of servers which we dont want to have access to the people
+
+
+web servers, application servers -- > websites --> public subnet 
+DB server --> private subnet 
+
+VPC --> we create public and private subnets 
+
+as many no of public and private subnets we can create 
+
+in public subnet how many servers i can keep ? as many 
+
+here in network setup , we provide an IGW for internet to the public subnet 
+by default there will be no internet to the private subnet 
+
+NAT --> internet to private subnet 
+
+
+
+15/11/2023
+1. we created a VPC 10.0.0.0/16
+2. have created 2 subnets --> 1. public subnet 10.0.1.0/24
+                                                         2. private subnet 10.0.2.0/24
+3. created igw --> detached --> attach it to VPC
+4. RT --> default RT --> modified it as public RT --> subnet assoc --> added public subnet
+    routes--> add route --> 0.0.0.0/0 --> target as igw 
+5. created NAT --> give the name of nat--> allocate a elastic IP to it --> create 
+6. create a new RT --> subnet assoc --> attach private subnet 
+     routes --> add route--> 0.0.0.0/0 --> NAT 
+
+
+
+16/11/2023
+
+ECC --> EC2 -->ELASTIC CLOUD COMPUTE 
+SERVER --> COMPUTER 
+
+
+OUR COMPUTERS --> CLIENTS 
+CONFIG --> I5 , 8 GB , 512 GB SSD , 2GB GPU , WINDOWS OS 
+--> IT CAN SERVE ONE PERSON AT A TIME
+
+SERVER --> CAN SERVE MULTIPLE PEOPLE 
+CONFIG --> XEON , 100 GB , .... WINDOWS SERVER OS 
+
+
+
+17/11/2023 
+
+windows server creation , we logged in using RDP 
+linux server we use SSH to login 
+
+SSH --> secure shell 
+
+SSH --> Putty , mobaXterm 
+
+
+
+if it is a linux machine .. and if we are using putty to access it 
+we need to convert the pem file key to ppk file 
+putty gen software is used to convert 
+in puttygen .. click on load --> select the pem file 
+pop up msg comes as it is successful --> save the private key 
+u will get this ppk file 
+
+
+login to putty --> give ur public ip der --> 
+go to ssh --> auth --> credentials --> private key --> browse for ppk file 
+click on okay --> 
+give username as ubuntu .. check the basic commands 
+
+
+mobaxterm --> click on session --> click on ssh 
+
+give remote host address --> if needed username 
+go to advanced setting browse for ur pem file  
+click on okay
+linux interface will appear 
+
+
+20/11/23
+
+CREATE A VPC --> I LL CREATE PRIVATE AND PUBLIC SUBNETS 
+WE NEED TO KEEP TWO SERVERS .. ONE IN PUBLIC SUBNET 
+OTHER IN PRIVATE SUBNET 
+WE NEED TO VERIFY THE CONNECTIVITY 
+
+
+21/11/23
+
+VERIFY THE INTERNET CONNECTIVITY IN BOTH 
+IN PUBLIC SUBNET AND ALSO IN PRIVATE SUBNET 
+CREATE A VPC 
+HAVE 2 SUBNETS .. PUBLIC AND PRIVATE 
+KEEP A SERVERS IN BOTH PUBLIC AND PRIVATE 
+CHECK INTERNET CONNECTIVITY FRO PUBLIC SERVER 
+AS WELL AS FROM PRIVATE SERVER 
+
+
+24/11/23
+
+WEB SERVER: 
+
+WEBSITES ARE HOSTED 
+SERVER --> IIS , TOMCAT , APACHE2 
+
+CLIENT<------------------->INTERNET<-------------->SERVER 
+http request / http response 
+SSL TERMINATION 
+
+MAIL SERVER:
+SENDER , RECEIVER MECHANISM
+SENDER ---> MAIL SERVER ----->INTERNET ---> MAIL SERVER --->RECEIVER 
+SMTP --> SIMPLE MAIL TRASFER PROTOCOL 
+IMAP / POP ---> AT RECEIVER END 
+IMAP --> INTERNET MESSAGE ACCESING PROTOCOL 
+POP --> POSTOFFICE PROTOCOL 
+
+
+
+DNS SERVER :
+OUR SERVER HAVING A PUBLIC IP 
+BY USING IP WE ARE ACCESSING IT
+EVERY SERVER WILL HAVE PUBLIC IP
+DNS --> DOMAIN NAME SYSTEM 
+
+IF U TYPE EXAMPLE.COM --> DNS SERVER --> REPLIES WITH --> PUBLIC IP OF EXAMPLE.COM
+NOW BROWSER ---> SENDS ---> HTTP REQUESTS TO THAT PUBLIC IP 
+
+
+
+PROXY SERVER:
+U R CONNCTED WITH CONNCTED TO INTERNET THROUGH THIS SERVER 
+
+
+FTP SERVER 
+FTP --> FILE TRANSFER PROTOCOL
+
+
+ORIGIN SERVER:
+CDN --> CONTENT DELIVERY NETWORK 
+PIC --> IN US SERVER --> FROM US --> ASIAN SERVER 
+INDIAN SERVER --> U CAN ACCESS 
+IT GETS STORED IN LOCAL SERVERS 
+IT WILL HAVE WEB VISITORS AND RESPONDS TO THEM 
+
+APPLICATION SERVER:
+
+API           EX:REST 
+CRUD --> CREATE , READ, UPDATE , DELETE 
+
+
+DATABASE SERVERS:
+
+
+we launched web server 
+from windows machine and also from linux 
+3.119.123.234 --> website 1
+11.12.12.23
+
+DNS --> domain name system 
+
+3.119.123.234  ---> facebook.com 
+
+chrome (browser) --> DOmain name --> DNS Server -->DNS server responds with the ip of the domain 
+
+DNS service in aws --> route 53
+
+53 it is port number of DNS 
+80 --> http
+22--> ssh 
+
+domain name 
+
+
+
+hosted zone --> collections of records 
+
+A record --- > combines u r ip with domain name 
+
+CAA record --> SSL terminations 
+
+AAAA record --> ipv6 
+CNAME record -->  used for third party dns 
+
+
+back up :
+2 types of backup 
+1. volume level backup ---> snapshot 
+2. system level backup ---> AMI 
+
+
+snapshot
+we can add a volume while creating it self 
+or else 
+seperately we can create a volume and attach it to a running ec2
+
+
+AMI ----> amazon machine image 
+to create system level backups 
+
+AMI S  are of 4 types 
+1. quick start ami or amazon ami
+2. my AMI s 
+3. AWS market place AMI s
+4. COmmunity AMI s 
+
+
+SECURITY IN AWS
+------------------------------------
+
+DEVSECOPS , MLOPS ETC ETC 
+
+
+DEVOPS 
+
+1. NETWORK ACL S -- NACL-- network access control list
+2. SG - SECURITY GROUP
+
+NACL IS A SUBNET LEVEL PERMISSIONS 
+WE CONFIGURE BASED ON PORT NUMBERS ... NETWORKS 
+RDP  -- OPEN FOR ALL 
+HTTP --
+SSH-22
+FTP 21 
+TELNET -80
+DNS-53
+
+
+SG -- > SERVER LEVEL PERMISSION 
+
+STORAGE 
+AWS ---> 3 TYPES --> 
+1. EBS VOLUMES --- elastic block storage 
+2. EFS --- elastic file sharing 
+3. S3 --- sss ---- simple storage service 
+
+
+EBS                                                                EFS                                                             S3 
+1. NEEDS A COMPUTER                1. DOESNOT NEED ANY 	1. DOESNT NEED ANY COMPUTER
+				COMPUTER	
+2. 1 DISK -- 16TB		2. 5TB			2. INFINITE DATA --- BUCKET-5TB 
+3. FILE SYSTEM IS DER	3. FILE SYSTEM IS DER	3. NO FILE SYSTEM 
+4. BLOC 			4. BLOC			4.BLOB 
+5. IOPS 			5. IOPS 			5. 
+6. one server		6. avilable for whole vpc 	6. avialable across globe 
+
+S3:
+SIMPLE STORAGE SERVICE 
+3 THINGS : 1, BUCKETS 2 FOLDERS 3 OBJECTS(FILES)
+
+S3 --> CREATE A BUCKET --- OBJECT OF 5 TB 
+100 BUCKETS IN A ACCOUNT 
+
+
+
+AWS LAMBDA FUNCTION
+-------------------------------------------------
+-> A LAMBDA FUNCTION IS A SERVERLESS ARCHITECTURE 
+WITHOUT SERVER WE CAN EXECUTE OUR TASKS 
+
+-> FIRST STEP OF U GUYS .. TOWARDS AUTOMATION ..
+HOW TO TRIGGER A LAMBDA FUNCTION .. 1. SCHEDULE BASED   2.EVENT DRIVEN 
+
+AUTO SCALING ---> IF TRAFFIC IS HIGH AUTOMATICALLY NO OF SERVERS WILL INCREASE 
+IF THE TRAFFIC IS LOW NO OF SERVERS GETS REDUCED 
+
+
+Repositories --- Repos 
+SCM tool -- source code management tool 
+VCS ---> version control system 
+ex of vcs : git , TFS (Team Foundation Server --- microsoft)
+
+git , github 
+
+git 						github 
+software installed on our computer 		online cloud repository 
+2005 it started 					2008	
+command line control			administrated through web 
+open source 				open source 
+
+
+
+
+github
+branches --- > on branch --- current version running --master 
+on second branch --- extra features 
+on third branch --- bug fixes 
+on fourth branch -- hotfix 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
